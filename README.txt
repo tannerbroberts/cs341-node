@@ -1,0 +1,1 @@
+This is just to test and make sure Github is connected properly for my Visual Studio editor.
