@@ -49,5 +49,5 @@ const requestHandler = (req, res) => {
 module.exports = {
     // One single object
     handler: requestHandler,
-    someText: 'Some hard coded text';
-}
+    someText: 'Some hard coded text'
+};
