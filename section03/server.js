@@ -22,8 +22,8 @@ const server = http.createServer((req, res) => {
     res.write('<head><title>My First Pave</title><head>');
     res.write('<body><h1>Hello from my Node.js Server!</h1></body>')
     res.write('</html>');
-    res.end();
     // Can't write any more after this!!!
+    res.end();
 });
 
 // Tells the newly creates server to listen, and the information it needs to listen
