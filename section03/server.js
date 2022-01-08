@@ -11,11 +11,28 @@
 // Imports
 //*****************************************************************************
 const http = require('http'); // auto-adds .js at the end
+const fs = require('fs');
 
 // Create the server with the listener function defined as ananonamous function
 //*****************************************************************************
 const server = http.createServer((req, res) => {
-    console.log(req.url, req.method);
+    console.log('Request URL: ', req.url, 'Request method: ', req.method);
+    const url = req.url;
+    const method = req.method;
+    if(url === '/') {
+        res.write('<html>');
+        res.write('<head><title>Enter Message</title><head>');
+        res.write('<body><form action="/message" method="POST"><input name="message" type="text"><button type ="submit">Send</button></form></body>')
+        res.write('</html>');
+        // make sure to use keyword return because this is all we want to do
+        return res.end();
+    }
+    if(url === '/message' && method === 'POST') {
+        fs.writeFileSync('message.txt', 'DUMMY');
+        res.statusCode = 302;
+        res.setHeader('Location', '/');
+        return res.end();
+    }
 
     res.setHeader('Content-Type', 'text/html');
     res.write('<html>');
