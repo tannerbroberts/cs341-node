@@ -1,0 +1,1 @@
+// npm install <package> --save-dev downloads and installs into a single project but only for development purposes
