@@ -20,7 +20,15 @@ class User {
     const db = getDb();
     return db
       .collection('users')
-      .findOne({ _id: new ObjectId(userId) });
+      .find({_id: new ObjectId(userId)})
+      .next()
+      .then(user => {
+        console.log('User:', user);
+        return user;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 }
 
