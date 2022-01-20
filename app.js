@@ -9,20 +9,6 @@ const csrf = require('csurf');
 const flash = require('connect-flash');
 const cors = require('cors');
 
-const corsOptions = {
-    origin: "https://tanner-bennington-roberts-001.herokuapp.com/",
-    optionsSuccessStatus: 200
-};
-app.use(cors(corsOptions));
-
-const options = {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    family: 4
-};
-
 const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://root:run@nodecluster.cjoru.mongodb.net/shop?retryWrites=true&w=majority";
 
 const errorController = require('./controllers/error');
@@ -99,6 +85,20 @@ app.use((error, req, res, next) => {
     isAuthenticated: req.session.isLoggedIn
   });
 });
+
+const corsOptions = {
+  origin: "https://tanner-bennington-roberts-001.herokuapp.com/",
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
+const options = {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  family: 4
+};
 
 const PORT = process.env.PORT || 3000;
 mongoose
